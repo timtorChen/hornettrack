@@ -1,0 +1,15 @@
+*.pyc
+
+db.sqlite3
+production.py
+
+# Byte-compiled
+__pycache__/
+
+# npm
+node_modules/
+
+
+# django channel on test
+consumers.py
+routing.py
