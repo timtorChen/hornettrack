@@ -3,8 +3,13 @@ import ReactDOM from 'react-dom'
 import axios from 'axios'
 import {Cookies} from 'react-cookie'
 import {
+<<<<<<< HEAD
   BrowserRouter as Router,
   Route,
+=======
+  Route,
+  BrowserRouter as Router,
+>>>>>>> master
   Link,
   BrowserRouter,
   withRouter
@@ -238,7 +243,10 @@ appState.accurateRequest = function(name,successCall,errorCall){
   })
 }
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> master
 // under DEV! 
 // expect me in next verson~
 // geocoding api need to bundle on static IP, which means I have no time dealing with "QuotaGuard Static"!?
@@ -279,7 +287,42 @@ appState.sendErrorToGA = function(name,status){
   });
 }
 
+<<<<<<< HEAD
 // {id:}
+=======
+appState.footprintRequest= function(id,successCall,errorCall){
+  axios({
+    method:'post',
+    url:'/footprint/',
+    headers: {'X-CSRFToken': CSRF_TOKEN},
+    data:{id:id}
+  })
+  .then(response=>{
+    const foot = response.data.foot
+    const latest = foot.slice(-1)[0]
+    map.setView([latest.latitude,latest.longitude],14)
+
+    trackGroup.clearLayers()
+    foot.map((footprint,index,array)=>{
+      const location = [footprint.latitude,footprint.longitude]
+
+      if(index==array.length-1)
+        L.marker(location,redMarker).addTo(trackGroup)
+      else 
+        L.marker(location,blueMarker).addTo(trackGroup)
+    })
+    trackGroup.addTo(map)
+    if(successCall) successCall()
+    
+  })
+  .catch(error=>{
+    if(errorCall) errorCall()
+  })
+
+}
+
+// {id: , islover: }
+>>>>>>> master
 @withRouter
 @observer
 class Dialog extends React.Component{
@@ -289,6 +332,10 @@ class Dialog extends React.Component{
 
   constructor(props){
     super(props)
+<<<<<<< HEAD
+=======
+    this.onGlobeClick = this.onGlobeClick.bind(this)
+>>>>>>> master
     this.onStarClick = this.onStarClick.bind(this)
     this.onSyncClick = this.onSyncClick.bind(this)
   }
@@ -311,7 +358,12 @@ class Dialog extends React.Component{
         el: '.swiper-pagination',
         clickable: true,
         dynamicBullets: true
+<<<<<<< HEAD
       }
+=======
+      },
+      resistanceRatio:0
+>>>>>>> master
     };
     const detail = this.detail
 
@@ -381,9 +433,18 @@ class Dialog extends React.Component{
                   </div>
                 </div>
                 <div className='topbar-widget-wrapper'>
+<<<<<<< HEAD
                   <div className='fas fa-star topbar-widget' onClick={this.onStarClick}/>
                   <div className={`fas fa-sync-alt topbar-widget ${this.sync ? 'icon-rotate' : '' }`}
                        onClick={()=>{this.onSyncClick(this.detail.account.username)}}/>
+=======
+                  { this.props.islover ? 
+                    <div className='fas fa-globe topbar-widget' onClick={()=>{this.onGlobeClick(detail.id)}}/>  :
+                    <div className='fas fa-star topbar-widget' onClick={this.onStarClick}/>
+                  }
+                  <div className={`fas fa-sync-alt topbar-widget ${this.sync ? 'icon-rotate' : '' }`}
+                       onClick={()=>{this.onSyncClick(detail.account.username)}}/>
+>>>>>>> master
                 </div>
               </div>
 
@@ -435,6 +496,13 @@ class Dialog extends React.Component{
     )
   }
 
+<<<<<<< HEAD
+=======
+  onGlobeClick(id){
+    appState.footprintRequest(id)
+  }
+
+>>>>>>> master
   onStarClick(){
   }
   
@@ -519,17 +587,28 @@ class FansDialog extends React.Component{
   
   handleScroll(){
     const e = this.scrollDom
+<<<<<<< HEAD
     const ratio = e.scrollTop/(e.scrollHeight-e.clientHeight)
     const loaded = this.per_page*(this.page-1)
     const total = this.props.fansnum 
     // waterfall style
     if(!this.scroll && ratio>=0.6 && loaded<total){
+=======
+    const reachBottom= (e.scrollHeight-e.clientHeight)-e.scrollTop <= 50
+    const loaded = this.per_page*(this.page-1)
+    const total = this.props.fansnum 
+    // waterfall style
+    if(!this.scroll && reachBottom && loaded<total){
+>>>>>>> master
       this.scroll = true
       this.updatePage();
     }
   }
+<<<<<<< HEAD
 
 
+=======
+>>>>>>> master
 }
 
 /*  either { basic:{....}} or { id: }  
@@ -548,11 +627,19 @@ class Member extends React.Component{
     
     this.getMemberInfo = this.getMemberInfo.bind(this)
     this.onSyncClick = this.onSyncClick.bind(this)
+<<<<<<< HEAD
+=======
+    this.onGlobeClick = this.onGlobeClick.bind(this)
+>>>>>>> master
   }
 
   render(){
 
+<<<<<<< HEAD
     let id,name,img,online,display_name
+=======
+    let id,name,img,online,display_name,islover
+>>>>>>> master
 
     if(!this.props.basic){
       if(this.detail){
@@ -562,6 +649,10 @@ class Member extends React.Component{
         img = detail.photos.length ? detail.photos[0].photo.thumbnail_large_url :null
         online = detail.online
         display_name = detail.display_name
+<<<<<<< HEAD
+=======
+        islover = true
+>>>>>>> master
       }
     }else{
       const basic = this.props.basic
@@ -570,6 +661,10 @@ class Member extends React.Component{
       img = basic.thumbnail_large_url
       online = basic.online
       display_name = basic.display_name
+<<<<<<< HEAD
+=======
+      islover=false
+>>>>>>> master
     }
 
     const routeurl = this.props.match.url!=`/` ? `${this.props.match.url}/${id}` : `/p/${id}`
@@ -584,7 +679,11 @@ class Member extends React.Component{
                   onTap={()=>{this.props.history.push(routeurl)}} >
           <img className='sticky' style={onPressDark}
               src={ img && this.loaded ? img : defaultIMG} 
+<<<<<<< HEAD
               onLoad={()=> this.loaded=true }
+=======
+              onLoad={()=> {this.loaded=true}}
+>>>>>>> master
               onContextMenu={(e)=>{e.preventDefault()}}/>
         </Tappable>
         <div className="tool-wrapper" style={onPressShow}
@@ -592,6 +691,7 @@ class Member extends React.Component{
              onContextMenu={(e)=>{e.preventDefault()}}>
           <i className='tool fas fa-info' style={onSyncHide}
              onClick={()=>{this.props.history.push(routeurl); this.press=false}}/>
+<<<<<<< HEAD
           <i className={`tool fas ${this.sync? 'fa-spinner icon-rotate': 'fa-sync-alt' }`} 
              style={onSyncLargeFont}
              onClick={()=>{this.onSyncClick(name)}}/>
@@ -599,6 +699,21 @@ class Member extends React.Component{
         <div className={online ? 'online' : 'offline'}></div>
         <div className="display">{display_name}</div>
         <Route path={routeurl} render={()=>ReactDOM.createPortal(<Dialog id={id}/>,DialogDom)}/>
+=======
+          
+          { islover ? 
+            <i className='tool fas fa-globe' style={onSyncHide} 
+               onClick={()=>{this.onGlobeClick(id)}}/> : null}
+          
+          <i className={`tool fas ${this.sync? 'fa-spinner icon-rotate': 'fa-sync-alt' }`} 
+             style={onSyncLargeFont}
+             onClick={()=>{this.onSyncClick(name)}}/>
+        
+        </div>
+        <div className={online ? 'online' : 'offline'}></div>
+        <div className="display">{display_name}</div>
+        <Route path={routeurl} render={()=>ReactDOM.createPortal(<Dialog id={id} islover={islover}/>,DialogDom)}/>
+>>>>>>> master
       </div>
     )
   }
@@ -620,6 +735,19 @@ class Member extends React.Component{
     }
   }
 
+<<<<<<< HEAD
+=======
+  onGlobeClick(id){
+    const success = () =>{
+      this.press=false
+    }
+    const error = () =>{
+      this.press=false
+    }
+    appState.footprintRequest(id,success.bind(this),error.bind(this))
+  }
+
+>>>>>>> master
   componentDidMount(){
      // if no basic info provided call getMerberInfo 
      if(!this.props.basic) this.getMemberInfo()
@@ -635,6 +763,24 @@ class Member extends React.Component{
     .then(response =>{
       this.detail=response.data.member
     })
+<<<<<<< HEAD
+=======
+    .catch(error =>{
+        console.log(error)
+        if(error.response.status==404){
+          axios({
+            method:'post',
+            url:'/clear/',
+            headers: {'X-CSRFToken': CSRF_TOKEN},
+            data:{id:this.props.id}
+          })
+          .then(response=>{
+            const index = appState.trackId.indexOf(this.props.id)
+            appState.trackId.splice(index,1)
+          })
+        }
+    })
+>>>>>>> master
   }
 }
 
@@ -701,9 +847,15 @@ class Panel extends React.Component{
        
     handleScroll(){
       const e = this.drag;
+<<<<<<< HEAD
       const ratio = e.scrollTop/(e.scrollHeight-e.clientHeight);
       // waterfall style
       if(!appState.scroll && ratio>=0.6){
+=======
+      const reachBottom= (e.scrollHeight-e.clientHeight)-e.scrollTop <= 50
+      // waterfall style
+      if(!appState.scroll && reachBottom){
+>>>>>>> master
         appState.scroll = true
         appState.updatePage();
       }
@@ -849,11 +1001,18 @@ class Dragger extends React.Component{
     const ratio = Math.abs(this.y_last/this.maxdrag)
     const y = ratio*maxdrag
 
+<<<<<<< HEAD
     this.drag.style.transform = `translate(0px,${y}px)`
     this.drag.style.height = `${-y+navigationHieght}px`
     this.map.style.height = `${-(maxdrag-y)}px`
     if( -(maxdrag/2-y) >= 0){
       this.icon.style.transform = `translate(0px,${y}px)`
+=======
+    this.drag.style.top = `${-(maxdrag-y)}px`
+    this.map.style.height = `${-(maxdrag-y)}px`
+    if( -(maxdrag/2-y) >= 0){
+      this.icon.style.bottom = `${navigationHieght -y}px`
+>>>>>>> master
       map.invalidateSize()
     }
 
@@ -906,11 +1065,19 @@ class Dragger extends React.Component{
     else if(y>0)
       y=0
 
+<<<<<<< HEAD
     this.drag.style.transform = `translate(0px,${y}px)`
     this.drag.style.height = `${-y+navigationHieght}px`
     this.map.style.height = `${-(maxdrag-y)}px`
     if(-(maxdrag/2-y) >= 0){
       this.icon.style.transform = `translate(0px,${y}px)`
+=======
+    this.drag.style.top = `${-(maxdrag-y)}px`
+    this.drag.style.height = `${navigationHieght-y}px`
+    this.map.style.height = `${-(maxdrag-y)}px`
+    if(-(maxdrag/2-y) >= 0){
+      this.icon.style.bottom = `${navigationHieght -y}px`
+>>>>>>> master
       map.invalidateSize()
     }
 
@@ -950,11 +1117,19 @@ class Dragger extends React.Component{
           y=0
         }
         requestAnimationFrame(updateDrag)
+<<<<<<< HEAD
         self.drag.style.transform = `translate(0px,${y}px)`
         self.drag.style.height = `${-y+navigationHieght}`
         self.map.style.height = `${-(maxdrag-y)}px`
         if(-(maxdrag/2-y) >= 0){
           self.icon.style.transform = `translate(0px,${y}px)`
+=======
+        self.drag.style.top = `${-(maxdrag-y)}px`
+        self.drag.style.height = `${navigationHieght-y}px`
+        self.map.style.height = `${-(maxdrag-y)}px`
+        if(-(maxdrag/2-y) >= 0){
+          self.icon.style.bottom = `${navigationHieght-y}px`
+>>>>>>> master
           map.invalidateSize()
         }  
       }
