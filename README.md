@@ -32,7 +32,11 @@ They had discussed to restrict the information shown, but they don't think this 
 
 said Francisco, the hornet customer service.
 
+## Prevention
+1. Disable showing distance in setting, but be careful  of your followers, did you notice the followers is sorted by distance 😉?
+
+2. Disable sharing your profile, which prevent your from being found by Hornet id.
 
 ## Disclaimer 
 - Author have no legal liability to user's action.
-- Do not abuse this website. The world is filled with love, go outside and explore your new story.
+- Do not abuse this website. The world is filled with love, go outside and explore a new story.
