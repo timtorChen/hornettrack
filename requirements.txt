@@ -23,6 +23,6 @@ user-agents
 django-webpack-loader
 
 # django channels
-channels
-asgi_redis  # ram server 
+# channels
+# asgi_redis  
 

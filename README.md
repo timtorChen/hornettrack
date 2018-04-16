@@ -37,6 +37,24 @@ said Francisco, the hornet customer service.
 
 2. Disable sharing your profile, which prevent your from being found by Hornet id.
 
+## Local installation
+Hornettrack use django as backend, please run it under virtualenv.
+
+```
+pip install -r requirements.txt 
+```
+
+Mobile site is a pratice of react framework
+```
+npm install
+```
+
+After installing dependancies, build your local database and run server.
+```
+python manage.py migrate
+python manage.py runserver 
+```
+
 ## Disclaimer 
 - Author have no legal liability to user's action.
 - Do not abuse this website. The world is filled with love, go outside and explore a new story.
