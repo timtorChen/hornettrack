@@ -1,0 +1,39 @@
+{
+    // See https://go.microsoft.com/fwlink/?LinkId=733558
+    // for the documentation about the tasks.json format
+    "version": "2.0.0",
+    "tasks": [  
+        {
+            "label": "Django Server",
+            "windows": {
+                "options":{
+                    "shell": {
+                        // use cmd as default shell to run django server,
+                        // git bash has some directory error
+                        "executable": "cmd.exe",
+                        "args": ["/d", "/c"]
+                    }
+                }
+            },
+            "type": "shell",
+            "command": "${config:python.pythonPath}",
+            "args": [
+                "manage.py",
+                "runserver_plus",
+                "--cert-file",
+                "cert/example.com.crt",
+                "--key-file",
+                "cert/example.com.key",
+                "0.0.0.0:8000"
+            ],
+            "presentation": {
+                "showReuseMessage": false
+            },
+            "problemMatcher": []
+<<<<<<< HEAD
+        },
+=======
+        }
+>>>>>>> dev
+    ]
+}

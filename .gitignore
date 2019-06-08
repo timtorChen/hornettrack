@@ -1,15 +1,16 @@
-*.pyc
-
-db.sqlite3
-production.py
-
 # Byte-compiled
 __pycache__/
 
-# npm
+
+# local database
+db.sqlite3
+# local dev 
+webpack-stats.json
+dev/
+
+# npm & webpack
 node_modules/
 
-
-# django channel on test
-consumers.py
-routing.py
+# production
+production.py
+docker-compose-host.yml

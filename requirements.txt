@@ -1,28 +1,23 @@
-certifi==2017.7.27.1
+Django==2.1.4
+
+geopy==1.18.1
+geographiclib==1.49
+
+requests==2.21.0
+numpy==1.15.4
+scipy==1.2.0
+
+user-agents==1.1.0
+django-webpack-loader==0.6.0
+
+get==2018.11.19
+certifi==2018.11.29
 chardet==3.0.4
-dj-database-url==0.4.2
-dj-static==0.0.6
-Django==1.11.4
-django-toolbelt==0.0.1
-geopy==1.11.0
-gunicorn==19.7.1
-idna==2.6
-psycopg2==2.7.3
-pytz==2017.2
-requests==2.18.4
-scipy
-numpy
-static3==0.7.0
-urllib3==1.22
-whitenoise==3.3.0
-
-# react
-pyyaml 
-ua-parser 
-user-agents
-django-webpack-loader
-
-# django channels
-# channels
-# asgi_redis  
+idna==2.8
+post==2018.11.20
+public==2018.11.20
+pytz==2018.7
+query-string==2018.11.20
+ua-parser==0.8.0
+urllib3==1.24.1
 

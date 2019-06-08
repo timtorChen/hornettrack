@@ -20,8 +20,6 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__fil
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/1.11/howto/deployment/checklist/
 
-# SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'whatever'
 
 ADMINS =[('timtor','opmsa02@gmail.com')]
 
@@ -35,7 +33,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'deploy',
+    'main',
     'webpack_loader',
     # 'channels'
 ]
@@ -54,7 +52,7 @@ MIDDLEWARE = [
 ROOT_URLCONF = 'web.urls'
 
 TEMPLATES = [
-    {
+    {   
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
         'DIRS': [ os.path.join(BASE_DIR, 'templates').replace('\\', '/') ],
         'APP_DIRS': True,
@@ -106,19 +104,20 @@ USE_L10N = True
 USE_TZ = True
 
 
-# Static files (CSS, JavaScript, Images)
-# https://docs.djangoproject.com/en/1.11/howto/static-files/
+# The url where to find the static file
+
+## In DEV you can use whatever name, eg. STATIC_URL='/path/to/the/moon' ,django will get files from STATICFILES_DIRS directories
+## In PRODUCTION you can use the url of CDN or GCP static server, eg. STATIC_URL='https://database.google.com/'
 STATIC_URL = '/static/'
 
-# Static files (CSS, JavaScript, Images)
-# https://docs.djangoproject.com/en/1.9/howto/static-files/
-STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
-
-# Extra places for collectstatic to find static files.
+# Places to find static files
 STATICFILES_DIRS = (
-    os.path.join(BASE_DIR, 'static'),
-    os.path.join(BASE_DIR, 'assets')
+    os.path.join(BASE_DIR, 'src'),
 )
+
+# the name of collectstatic directory
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfile')
+
 
 WEBPACK_LOADER = {
     'DEFAULT': {
@@ -127,9 +126,3 @@ WEBPACK_LOADER = {
     }
 }
 
-# CHANNEL_LAYERS = {
-#     "default": {
-#         "BACKEND": "asgi_redis.RedisChannelLayer",
-#         "ROUTING": "web.routing.channel_routing",
-#     },
-# }

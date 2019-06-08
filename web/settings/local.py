@@ -5,11 +5,14 @@ from web.settings.base import *
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
+# SECURITY WARNING: keep the secret key used in production secret!
+SECRET_KEY = 'El-Psy-Congroo'
+
 ALLOWED_HOSTS = ['*']
 
 # App for local developement
 INSTALLED_APPS += [
-
+    'django_extensions'
 ]
 
 # Database
@@ -21,4 +24,3 @@ DATABASES = {
         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
     }
 }
-

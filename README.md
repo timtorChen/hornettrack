@@ -19,10 +19,6 @@ In order to improve accuracy, it makes requests of every small interval from the
 After all requests done, take the average of locations in requests which response 80m from Hornet server.
 
 
-## Future works
-🌐 geolocation 
-
-👣⌚ timeline
 
 ## Report to Hornet
 Hornet do not think the distance information is a fault.
@@ -44,12 +40,13 @@ Hornettrack use django as backend, please run it under virtualenv.
 pip install -r requirements.txt 
 ```
 
-Mobile site is a pratice of react framework
+This site is made of reactjs framework, install the developement dependancies, and build your local ```webpack-stats.json``` for [webpcak-locader](https://github.com/owais/django-webpack-loader)
 ```
-npm install
+yarn install
+yarn run webpack:build
 ```
 
-After installing dependancies, build your local database and run server.
+After installing, build your local database and run server.
 ```
 python manage.py migrate
 python manage.py runserver 
