@@ -4,9 +4,7 @@
   "main": "webpack.config.js",
   "scripts": {
     "webpack:dev": "webpack-dev-server -d --https --key cert/example.com.key --cert cert/example.com.crt ",
-    "webpack:build": "webpack -p",
-    "webpack:legacy-dev": "webpack-dev-server -d --https --key cert/example.com.key --cert cert/example.com.crt --config webpack.legacy.config.js",
-    "webpack:legacy-build": "webpack --config webpack.legacy.config.js -p"
+    "webpack:build": "webpack -p"  
   },
   "engines": {
     "npm": "5.8.0"

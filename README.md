@@ -33,20 +33,27 @@ said Francisco, the hornet customer service.
 
 2. Disable sharing your profile, which prevent your from being found by Hornet id.
 
-## Local installation
-Hornettrack use django as backend, please run it under virtualenv.
+## Developement
 
-```
-pip install -r requirements.txt 
-```
+Make sure you have the following runtime
+- [python](https://www.python.org/downloads/)>=3.6 
+- [pipenv](https://github.com/pypa/pipenv): python package management and virtual environment 
+- [yarn](https://yarnpkg.com/en/docs/install) or [npm](https://www.npmjs.com/get-npm): javascript package management
 
-This site is made of reactjs framework, install the developement dependancies, and build your local ```webpack-stats.json``` for [webpcak-locader](https://github.com/owais/django-webpack-loader)
+Clone this project and install dependencies. 
 ```
+git clone https://github.com/timtorChen/hornettrack
+cd hotnettrack
+pipenv install 
 yarn install
+```
+
+Build your local bundle files
+```
 yarn run webpack:build
 ```
 
-After installing, build your local database and run server.
+Finally, build your local database and run server.
 ```
 python manage.py migrate
 python manage.py runserver 
