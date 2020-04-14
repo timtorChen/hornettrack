@@ -1,5 +1,7 @@
 # 🦋 HorneTrack
 
+**📦 This project was no longer work and stoped maintain since 2019 winter**
+
 HornetTrack is a experimental project for auto stalk user on gay dating app Hornet.
 
 - Inspired by [GrindrMap](https://grindrmap.neocities.org/)
